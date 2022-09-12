@@ -1,0 +1,30 @@
+---
+title: "Nolan_Assignment 2"
+output: html_document
+date: "2022-09-12"
+---
+
+
+```{r Import Data from CSV}
+myData <- read.csv('MovieRatings.csv', header = TRUE, sep = ",")
+
+```
+
+```{r Remove NULL Values, update Class to Numeric, and Summary of Ratings}
+df1 <- myData[!myData$Rating == "NULL", ] 
+
+df1$Rating <- as.numeric(df1$Rating)
+
+
+summary(df1$Rating)
+
+```
+
+```{r}
+library(ggplot2)
+
+?ggplot
+ggplot(data = df1, aes(x=Rating, y=MovieTitle))+
+  geom_point()
+
+```
